@@ -1,0 +1,47 @@
+*{
+font-family: cinzel;
+font-weight:500;
+}
+.fauna-font {
+    font-family: 'Fauna One', serif;
+  }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .fadeIn {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  .slideIn {
+    animation: slideIn 0.5s ease-out;
+  }
+
+  .header-image {
+    background-image: url('https://images.unsplash.com/photo-1707343848552-893e05dba6ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTUzNXwxfDF8c2VhcmNofDF8fCUyMlRyYXZlbCUyMnxlbnwwfHx8fDE3Mzc2ODkyMjh8MA&ixlib=rb-4.0.3&q=80&w=1080');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    height: 860px;
+  }
+
+  .overlay-black {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  }
