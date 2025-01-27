@@ -1,91 +1,90 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
-*{
-font-family: "Poppins", sans-serif;
-font-weight:500;
+* {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
 }
 
 html {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
+}
 
 .fauna-font {
-    font-family: 'Fauna One', serif;
-  }
+  font-family: "Fauna One", serif;
+}
 
-  /* Ensure the entire box remains in place */
+/* Ensure the entire box remains in place */
 .serviceBox {
-    position: relative;
-    overflow: hidden; /* Hide any part of the image that overflows */
-  }
-  
-  /* Style for the image wrapper */
-  .hoverImageWrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Ensure the image stays behind the content */
-  }
+  position: relative;
+  overflow: hidden; /* Hide any part of the image that overflows */
+}
 
-  
-  /* Image stays in place initially, and zooms when hovered */
-  .hoverImage {
-    transition: transform 0.5s ease-in-out;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    transform-origin: center center;
-  }
-  
-  /* Zoom effect only on image without affecting the container box */
-  .serviceBox:hover .hoverImage {
-    transform: scale(1.2); /* Zoom in the image */
-  }
-  
-  /* Content stays above the image */
-  .serviceBox .relative {
-    position: relative;
-    z-index: 10; /* Content in front of the image */
-  }
-  
+/* Style for the image wrapper */
+.hoverImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Ensure the image stays behind the content */
+}
+
+/* Image stays in place initially, and zooms when hovered */
+.hoverImage {
+  transition: transform 0.5s ease-in-out;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+}
+
+/* Zoom effect only on image without affecting the container box */
+.serviceBox:hover .hoverImage {
+  transform: scale(1.2); /* Zoom in the image */
+}
+
+/* Content stays above the image */
+.serviceBox .relative {
+  position: relative;
+  z-index: 10; /* Content in front of the image */
+}
+
 @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
-  @keyframes slideIn {
-    from {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
   }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-  .fadeIn {
-    animation: fadeIn 1s ease-in-out;
-  }
+.fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
 
-  .slideIn {
-    animation: slideIn 0.5s ease-out;
-  }
+.slideIn {
+  animation: slideIn 0.5s ease-out;
+}
 
-  .header-image {
-    background-image: url('https://images.unsplash.com/photo-1707343848552-893e05dba6ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTUzNXwxfDF8c2VhcmNofDF8fCUyMlRyYXZlbCUyMnxlbnwwfHx8fDE3Mzc2ODkyMjh8MA&ixlib=rb-4.0.3&q=80&w=1080');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Parallax effect */
-    height: 860px;
-  }
+.header-image {
+  background-image: url("https://images.unsplash.com/photo-1707343848552-893e05dba6ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTUzNXwxfDF8c2VhcmNofDF8fCUyMlRyYXZlbCUyMnxlbnwwfHx8fDE3Mzc2ODkyMjh8MA&ixlib=rb-4.0.3&q=80&w=1080");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect */
+  height: 860px;
+}
 
-  .overlay-black {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-  }
+.overlay-black {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+}
