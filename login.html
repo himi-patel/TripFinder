@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - TripFinder</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+ 
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll(".form-section").forEach(section => {
+        section.classList.add("hidden");
+      });
+      document.getElementById(sectionId).classList.remove("hidden");
+    }
+  </script>
+</head>
+<body class="bg-black text-white min-h-screen flex items-center justify-center">
+  <!-- Container -->
+  <div class="w-full max-w-md bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-2xl p-8">
+    <!-- Logo and Heading -->
+    <div class="text-center mb-6">
+      <h1 class="text-4xl font-bold text-[rgb(180,160,130)] mb-2">TripFinder</h1>
+      <p class="text-gray-400 text-sm">Your gateway to unforgettable adventures!</p>
+    </div>
+
+    <!-- Login Section -->
+    <div id="login-section" class="form-section">
+      <h2 class="text-xl font-semibold text-gray-300 mb-4">Login</h2>
+      <form action="/submit-login" method="POST" class="space-y-6">
+        <!-- Email Input -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 placeholder-gray-500 focus:ring-4 focus:ring-[rgb(180,160,130)] focus:border-[rgb(180,160,130)] focus:outline-none transition"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <!-- Password Input -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 placeholder-gray-500 focus:ring-4 focus:ring-[rgb(180,160,130)] focus:border-[rgb(180,160,130)] focus:outline-none transition"
+            placeholder="••••••••"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-[rgb(180,160,130)] text-gray-900 font-bold text-lg py-3 rounded-lg shadow-md hover:bg-[rgb(160,140,110)] focus:outline-none focus:ring-4 focus:ring-[rgb(180,160,130)] transition"
+        >
+          Login
+        </button>
+      </form>
+
+      <!-- Links -->
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-400">
+          New to TripFinder? 
+          <button onclick="showSection('signup-section')" class="text-[rgb(180,160,130)] font-medium hover:underline">Create an account</button>
+        </p>
+        <p class="text-sm text-gray-400 mt-2">
+          Forgot your password? 
+          <button onclick="showSection('forgot-section')" class="text-[rgb(180,160,130)] font-medium hover:underline">Reset it here</button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Signup Section -->
+    <div id="signup-section" class="form-section hidden">
+      <h2 class="text-xl font-semibold text-gray-300 mb-4">Create Account</h2>
+      <form action="/submit-signup" method="POST" class="space-y-6">
+        <!-- Name Input -->
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 placeholder-gray-500 focus:ring-4 focus:ring-[rgb(180,160,130)] focus:border-[rgb(180,160,130)] focus:outline-none transition"
+            placeholder="John Doe"
+          />
+        </div>
+
+        <!-- Email Input -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 placeholder-gray-500 focus:ring-4 focus:ring-[rgb(180,160,130)] focus:border-[rgb(180,160,130)] focus:outline-none transition"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <!-- Password Input -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 placeholder-gray-500 focus:ring-4 focus:ring-[rgb(180,160,130)] focus:border-[rgb(180,160,130)] focus:outline-none transition"
+            placeholder="Create a strong password"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-[rgb(180,160,130)] text-gray-900 font-bold text-lg py-3 rounded-lg shadow-md hover:bg-[rgb(160,140,110)] focus:outline-none focus:ring-4 focus:ring-[rgb(180,160,130)] transition"
+        >
+          Sign Up
+        </button>
+      </form>
+
+      <!-- Back Link -->
+      <div class="mt-6 text-center">
+        <button onclick="showSection('login-section')" class="text-[rgb(180,160,130)] font-medium hover:underline">Back to Login</button>
+      </div>
+    </div>
+
+    <!-- Forgot Password Section -->
+    <div id="forgot-section" class="form-section hidden">
+      <h2 class="text-xl font-semibold text-gray-300 mb-4">Forgot Password</h2>
+      <form action="/submit-forgot-password" method="POST" class="space-y-6">
+        <!-- Email Input -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-200 placeholder-gray-500 focus:ring-4 focus:ring-[rgb(180,160,130)] focus:border-[rgb(180,160,130)] focus:outline-none transition"
+            placeholder="Enter your registered email"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full bg-[rgb(180,160,130)] text-gray-900 font-bold text-lg py-3 rounded-lg shadow-md hover:bg-[rgb(160,140,110)] focus:outline-none focus:ring-4 focus:ring-[rgb(180,160,130)] transition"
+        >
+          Reset Password
+        </button>
+      </form>
+
+      <!-- Back Link -->
+      <div class="mt-6 text-center">
+        <button onclick="showSection('login-section')" class="text-[rgb(180,160,130)] font-medium hover:underline">Back to Login</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
