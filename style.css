@@ -2,10 +2,51 @@
 font-family: cinzel;
 font-weight:500;
 }
+html {
+    scroll-behavior: smooth;
+  }
+  
 .fauna-font {
     font-family: 'Fauna One', serif;
   }
 
+  /* Ensure the entire box remains in place */
+.serviceBox {
+    position: relative;
+    overflow: hidden; /* Hide any part of the image that overflows */
+  }
+  
+  /* Style for the image wrapper */
+  .hoverImageWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Ensure the image stays behind the content */
+  }
+
+  
+  /* Image stays in place initially, and zooms when hovered */
+  .hoverImage {
+    transition: transform 0.5s ease-in-out;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+  }
+  
+  /* Zoom effect only on image without affecting the container box */
+  .serviceBox:hover .hoverImage {
+    transform: scale(1.2); /* Zoom in the image */
+  }
+  
+  /* Content stays above the image */
+  .serviceBox .relative {
+    position: relative;
+    z-index: 10; /* Content in front of the image */
+  }
+  
 @keyframes fadeIn {
     from {
       opacity: 0;

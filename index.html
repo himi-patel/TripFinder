@@ -1,349 +1,764 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TripFinder</title>
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="style.css"> 
-  <link href="https://fonts.googleapis.com/css?family=Fauna+One:regular" rel="stylesheet" />
-  
-  <link href="https://fonts.googleapis.com/css?family=Cinzel:regular,500,600,700,800,900" rel="stylesheet" />
-<link rel="stylesheet" href="font-awesome/css/font-awesome.css">
-</head>
-<body class="bg-gray-100">
-    <header class="fixed w-full z-10">
-        <nav class="bg-black py-4 px-6">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TripFinder</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fauna+One:regular"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Cinzel:regular,500,600,700,800,900"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
+  </head>
+  <body class="bg-gray-100">
+    <header class="fixed w-full z-10 bg-black">
+        <nav class="py-4 px-6">
           <div class="flex justify-between items-center">
             <!-- Logo / Website Name -->
             <div class="text-xl font-bold text-white">
-             <a href="index.html"> TripFinder</a>
+              <a href="index.html">TripFinder</a>
             </div>
-
-            <div class="space-x-6">
-                <a href="index.html" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">Home</a>
-                <a href="#" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">About Us</a>
-                <a href="#" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">Services</a>
-                <a href="#" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">Testimonials</a>
-                <a href="#" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">Contact Us</a>
-              </div>
-    
-            <!-- Navbar Links -->
-          
-    
+      
+            <!-- Hamburger Menu for Mobile -->
+            <div class="lg:hidden">
+              <button id="menu-toggle" class="text-white focus:outline-none">
+                <i class="fa fa-bars"></i>
+              </button>
+            </div>
+      
+            <!-- Navbar Links (Hidden on Mobile, Visible on Large Screens) -->
+            <div class="hidden lg:flex space-x-6">
+              <a href="index.html" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">Home</a>
+              <a href="#about-us" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">About Us</a>
+              <a href="#services" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">Services</a>
+              <a href="#Testimonials" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">Testimonials</a>
+              <a href="#Conatct-us" class="text-white hover:text-[rgb(180,160,130)] transition duration-300">Contact Us</a>
+            </div>
+      
             <!-- User Profile Logo -->
             <div class="text-white hover:text-[rgb(180,160,130)]">
-            <a href="" ><i class="fa fa-user"></i></a>
+              <a href=""><i class="fa fa-user"></i></a>
             </div>
+          </div>
+      
+          <!-- Mobile Menu (Hidden by default) -->
+          <div id="mobile-menu" class="lg:hidden hidden bg-black py-4 mt-2 space-y-4">
+            <a href="index.html" class="text-white hover:text-[rgb(180,160,130)] transition duration-300 block">Home</a>
+            <a href="#about-us" class="text-white hover:text-[rgb(180,160,130)] transition duration-300 block">About Us</a>
+            <a href="#services" class="text-white hover:text-[rgb(180,160,130)] transition duration-300 block">Services</a>
+            <a href="#Testimonials" class="text-white hover:text-[rgb(180,160,130)] transition duration-300 block">Testimonials</a>
+            <a href="#Conatct-us" class="text-white hover:text-[rgb(180,160,130)] transition duration-300 block">Contact Us</a>
           </div>
         </nav>
       </header>
-    
+      
 
-      
-      <!-- Main Header Image and Text -->
-      <div class="header-image relative">
-        <!-- Black Overlay -->
-        <div class="overlay-black absolute inset-0"></div>
-        
-        <!-- Centered Content -->
-        <div class="relative flex flex-col justify-center items-center text-center text-white h-full space-y-8">
-            <!-- Main Title -->
-            <h1 class="text-6xl font-bold">TripFinder</h1>
-      
-            <!-- Source and Destination Dropdowns -->
-            <div class="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
-                <!-- Source Country -->
-                <div class="w-full md:w-1/2 relative">
-                  <label for="source-country" class="block text-gray-700 font-semibold mb-2">Source Country</label>
-                  <select id="source-country" class="w-full text-black border border-gray-300 rounded-lg p-3 pr-10 bg-transparent focus:outline-none focus:ring-2 focus:ring-[rgb(190,169,144)] appearance-none h-12">
-                    <option value="" disabled selected>Select Source Country</option>
-                    <option value="usa">USA</option>
-                    <option value="canada">Canada</option>
-                    <option value="india" >India</option> <!-- Default value -->
-                    <option value="australia">Australia</option>
-                  </select>
-                  <!-- Dropdown Arrow Icon -->
-                  <div class="absolute inset-y-0 right-3  mt-7.5 flex items-center pointer-events-none">
-                    <i class="fa fa-caret-down text-gray-500"></i> <!-- Font Awesome Icon -->
-                  </div>
-                </div>
-              
-                <!-- Destination Country -->
-                <div class="w-full md:w-1/2 relative">
-                  <label for="destination-country" class="block text-gray-700 font-semibold mb-2">Destination Country</label>
-                  <select id="destination-country" class="w-full text-black border border-gray-300 rounded-lg p-3 pr-10 bg-transparent focus:outline-none focus:ring-2 focus:ring-[rgb(190,169,144)] appearance-none h-12">
-                    <option value="" disabled selected>Select Destination Country</option>
-                    <option value="maldives">Maldives</option>
-                    <option value="japan">Japan</option>
-                    <option value="thailand" >Thailand</option>
-                    <option value="new-zealand">New Zealand</option>
-                  </select>
-                  <!-- Dropdown Arrow Icon -->
-                  <div class="absolute inset-y-0 right-3  mt-7.5 flex items-center pointer-events-none">
-                    <i class="fa fa-caret-down text-gray-500"></i> <!-- Font Awesome Icon -->
-                  </div>
-                </div>
-              </div>
-              
-              
-            <!-- Search Button -->  
-            <button class="mt-4 fauna-font px-6 py-3 bg-[rgb(190,169,144)] border border-[rgb(190,169,144)] font-semibold rounded-lg shadow-lg hover:bg-[rgb(141,129,111)] hover:border[rgb(190,169,144)]   transition duration-300">
-                Search
-              </button>
+    <!-- Main Header Image and Text -->
+    <div class="header-image relative">
+      <!-- Black Overlay -->
+      <div class="overlay-black absolute inset-0 bg-black opacity-50"></div>
+
+      <!-- Centered Content -->
+      <div
+        class="relative flex flex-col justify-center items-center text-center text-white h-full space-y-8 px-4 md:px-8"
+      >
+        <!-- Main Title -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold">TripFinder</h1>
+
+        <!-- Source and Destination Dropdowns -->
+        <div
+          class="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 w-full max-w-4xl"
+        >
+          <!-- Source Country -->
+          <div class="w-full sm:w-1/2 relative">
+            <label
+              for="source-country"
+              class="block text-gray-700 font-semibold mb-2"
+              >Source Country</label
+            >
+            <select
+              id="source-country"
+              class="w-full text-black border border-gray-300 rounded-lg p-3 pr-10 bg-transparent focus:outline-none focus:ring-2 focus:ring-[rgb(190,169,144)] appearance-none h-12"
+            >
+              <option value="" disabled selected>Select Source Country</option>
+              <option value="usa">USA</option>
+              <option value="uk">UK</option>
+              <option value="canada">Canada</option>
+              <option value="australia">Australia</option>
+              <option value="singapore">Singapore</option>
+              <option value="germany">Germany</option>
+              <option value="uae">UAE</option>
+              <option value="italy">Italy</option>
+              <option value="japan">Japan</option>
+              <option value="thailand">Thailand</option>
+              <option value="new-zealand">New Zealand</option>
+              <option value="maldives">Maldives</option>
+              <option value="greece">Greece</option>
+              <option value="turkey">Turkey</option>
+            </select>
+            <!-- Dropdown Arrow Icon -->
+            <div
+              class="absolute inset-y-0 right-3 mt-7.5 flex items-center pointer-events-none"
+            >
+              <i class="fa fa-caret-down text-gray-500"></i>
+              <!-- Font Awesome Icon -->
+            </div>
           </div>
-        </div>
-        
-      </div>
-    
-     
-    <!-- About Section Container -->
-    <div class="bg-black text-white pt-60 min-h-screen flex flex-col sm:flex-row items-start justify-center px-4 sm:px-6 md:px-10 lg:px-20">
-        <!-- Left Section (Leftbar) -->
-        <div class="w-full sm:w-1/3 flex justify-center items-start sm:block mb-8 sm:mb-0 ">
-        <h2 class="text-2xl sm:text-3xl  lg:text-4xl font-semibold text-center">About Trip Finder</h2>
-        </div>
-    
-        <!-- Vertical Line (Hidden on mobile) -->
-        <div class="hidden sm:block w-1 h-40 sm:h-60 bg-[rgb(190,169,144)] mx-6 md:mx-12 lg:mx-16"></div>
-    
-        <!-- Right Section (Rightbar) -->
-        <div class="w-full sm:w-2/3">
-        <p class="text-lg sm:text-xl md:text-2xl text-left fauna-font">
-            Welcome to Trip Finder, your go-to platform for effortless travel planning. Designed with user-friendliness in mind, our website simplifies the travel experience, allowing you to easily select your departure and arrival countries to access crucial travel information. With a focus on your needs, we provide a comprehensive suite of tools to help you plan your journey. From visa requirements to accommodation suggestions, embark on your travel adventure with confidence and ease at Trip Finder.
-        </p>
-        
-        <div class="flex justify-start space-x-4 mt-8 p-6"> 
-            <button class="bg-[rgb(190,169,144)] text-white px-6 py-3 hover:bg-[rgb(141,129,111)] fauna-font">
-            Services
-            </button>
-            <button class="bg-transparent fauna-font border border-gray-500 text-white px-6 py-3 hover:bg-[rgb(180,160,130)]">
-            Contact Us
-            </button>
-        </div>
-        </div>
-        </div>
 
-        <section class="bg-white py-10">
-            <div class="overflow-hidden">
-              <marquee behavior="scroll" direction="left" scrollamount="10" class="text-4xl font-extrabold text-[rgb(72,72,72)]">
-                Plan Your Adventure &nbsp;✈️ &nbsp; Plan Your Adventure &nbsp; 🌍 &nbsp; Plan Your Adventure &nbsp; 🏖️ &nbsp; Plan Your Adventure &nbsp; 🚀 
-              </marquee>
-            </div>
-          </section>
-          
-
-           <!--testimonial-->
-           <section class="bg-[rgb(235,230,222)] text-black py-24 px-6">
-            <!-- Title -->
-            <h2 class="text-5xl font-extrabold text-center text-black mb-6">
-              What Our Users Say
-            </h2>
-            
-            <!-- Subtitle -->
-            <p class="text-lg md:text-xl text-center text-[rgb(72,72,72)] mb-12 max-w-3xl mx-auto">
-              Hear from our happy users who have trusted <span class="text-[rgb(190,169,144)]">Trip Finder</span> for their perfect journeys.
-            </p>
-            
-            <!-- Testimonial Boxes -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <!-- Testimonial 1 -->
-              <div class="bg-white p-8 border border-[rgb(190,169,144)] rounded-lg shadow-lg transition transform hover:-translate-y-2 hover:shadow-xl duration-300">
-                <div class="flex items-center mb-4">
-                  <img src="photos/john.avif" alt="John Doe" class="w-12 h-12 rounded-full border-2 border-[rgb(190,169,144)] mr-4">
-                  <div>
-                    <h3 class="text-lg font-bold text-[rgb(72,72,72)]">John Doe</h3>
-                    <p class="text-sm text-gray-500">Traveler</p>
-                  </div>
-                </div>
-                <blockquote class="text-sm md:text-base italic text-[rgb(72,72,72)] fauna-font">
-                  "Trip Finder made planning my vacation a breeze! The visa information was clear and the flight options were plentiful, making my travel experience incredibly smooth."
-                </blockquote>
-              </div>
-              
-              <!-- Testimonial 2 -->
-              <div class="bg-white p-8 border border-[rgb(190,169,144)] rounded-lg shadow-lg transition transform hover:-translate-y-2 hover:shadow-xl duration-300">
-                <div class="flex items-center mb-4">
-                  <img src="photos/Jane.jpg" alt="Jane Smith" class="w-12 h-12 rounded-full border-2 border-[rgb(190,169,144)] mr-4">
-                  <div>
-                    <h3 class="text-lg font-bold text-[rgb(72,72,72)]">Jane Smith</h3>
-                    <p class="text-sm text-gray-500">Explorer</p>
-                  </div>
-                </div>
-                <blockquote class="text-sm md:text-base italic text-[rgb(72,72,72)] fauna-font">
-                  "I had a fantastic experience using Trip Finder! The hotel booking suggestions were spot on, and the local transportation options helped me navigate the city with ease."
-                </blockquote>
-              </div>
-              
-              <!-- Testimonial 3 -->
-              <div class="bg-white p-8 border border-[rgb(190,169,144)] rounded-lg shadow-lg transition transform hover:-translate-y-2 hover:shadow-xl duration-300">
-                <div class="flex items-center mb-4">
-                  <img src="photos/Emily.jpg" alt="Emily Johnson" class="w-12 h-12 rounded-full border-2 border-[rgb(190,169,144)] mr-4">
-                  <div>
-                    <h3 class="text-lg font-bold text-[rgb(72,72,72)] ">Emily Johnson</h3>
-                    <p class="text-sm text-gray-500">Adventurer</p>
-                  </div>
-                </div>
-                <blockquote class="text-sm md:text-base italic text-[rgb(72,72,72)] fauna-font">
-                  "Trip Finder helped me discover amazing places and made my trip planning stress-free. I highly recommend it to all travelers!"
-                </blockquote>
-              </div>
-            </div>
-            
-            <!-- Call-to-Action -->
-            <div class="text-center mt-12">
-              <button class="bg-[rgb(190,169,144)] text-white px-8 py-3 text-lg font-semibold rounded-lg hover:bg-[rgb(141,129,111)] transition duration-300 shadow-md">
-                Share Your Experience
-              </button>
-            </div>
-          </section>
-          
-  <!--bg img-->
-        <section class="bg-cover bg-center bg-no-repeat bg-fixed" style="background-image: url('photos/thomas-griesbeck-BS-Uxe8wU5Y-unsplash.jpg'); padding: 300px 0;">
-           
-          </section>
-
-          
-    <!-- contact Section -->   
-    <section class="bg-black text-white p-6 min-h-screen flex flex-col items-center justify-start">
-        <!-- Title -->
-        <h2 class="text-5xl font-semibold m-8 text-center">Contact Us</h2>
-        
-        <!-- Contact Section -->
-        <div class="w-full max-w-screen-lg flex flex-col md:flex-row items-start justify-center py-[80px]">
-          <!-- Left Section (Leftbar) -->
-          <div class="w-full md:w-1/2 flex flex-col justify-start items-start mb-8 md:mb-0 px-4">
-            <p class="text-lg mb-4 fauna-font">
-              <strong class="fauna-font">Email:</strong><br>
-              info@youraddress.com
-            </p>
-            <p class="text-lg mb-4 fauna-font">
-              <strong class="fauna-font">Phone:</strong><br>
-              646-675-5974
-            </p>
-            <p class="text-lg mb-4 fauna-font">
-              <strong class="fauna-font">Address:</strong><br>
-              3961 Small Street, New York, United States
-            </p>
-            
-            <!-- Horizontal Line -->
-            <hr class="border-t-2 border-white w-full mb-4" />
-      
-            <p class="text-lg fauna-font">
-              We'd be delighted to hear from you regarding any inquiries or feedback you may have.
-            </p>
-          </div>
-      
-          <!-- Vertical Line (on larger screens) -->
-          <div class="w-0.5 h-full bg-white mx-6 hidden md:block"></div>
-      
-          <!-- Right Section (Rightbar) -->
-          <div class="w-full md:w-1/2 flex flex-col justify-start items-start px-4">
-            <form action="#" method="POST" class="w-full">
-              <div class="mb-4">
-                <label for="name" class="block text-lg font-semibold fauna-font">Name</label>
-                <input type="text" id="name" name="name" class="w-full p-3 bg-white text-black border border-gray-500 fauna-font" placeholder="Enter your name" required>
-              </div>
-      
-              <div class="mb-4">
-                <label for="email" class="block text-lg font-semibold fauna-font">Email</label>
-                <input type="email" id="email" name="email" class="w-full p-3 bg-white text-black border border-gray-500 fauna-font" placeholder="Enter your email" required>
-              </div>
-      
-              <div class="mb-4">
-                <label for="message" class="block text-lg font-semibold fauna-font">Message</label>
-                <textarea id="message" name="message" rows="4" class="w-full p-3 bg-white text-black border border-gray-500 fauna-font" placeholder="Type your message here" required></textarea>
-              </div>
-      
-              <button type="submit" class="bg-[rgb(190,169,144)] text-white px-10 py-3 hover:bg-[rgb(141,129,111)] fauna-font">Send</button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-        <!--footer-->
-      <footer class="bg-black text-white pb-4">
-        <div class="container mx-auto px-6">
-          <div class="flex flex-col items-center justify-center space-y-6">
-            <!-- Links Section -->
-            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-center">
-              <a href="#about" class="text-lg font-semibold hover:text-gray-400 transition duration-300">About</a>
-              <a href="#services" class="text-lg font-semibold hover:text-gray-400 transition duration-300">Services</a>
-              <a href="#testimonials" class="text-lg font-semibold hover:text-gray-400 transition duration-300">Testimonials</a>
-              <a href="#contact" class="text-lg font-semibold hover:text-gray-400 transition duration-300">Contact</a>
-            </div>
-      
-            <!-- Copyright Section -->
-            <div class="text-center">
-              <p class="text-sm md:text-lg font-semibold">
-                &copy; 2025 TripFinder. All Rights Reserved.
-              </p>
+          <!-- Destination Country -->
+          <div class="w-full sm:w-1/2 relative">
+            <label
+              for="destination-country"
+              class="block text-gray-700 font-semibold mb-2"
+              >Destination Country</label
+            >
+            <select
+              id="destination-country"
+              class="w-full text-black border border-gray-300 rounded-lg p-3 pr-10 bg-transparent focus:outline-none focus:ring-2 focus:ring-[rgb(190,169,144)] appearance-none h-12"
+            >
+              <option value="" disabled selected>
+                Select Destination Country
+              </option>
+              <option value="usa">USA</option>
+              <option value="uk">UK</option>
+              <option value="canada">Canada</option>
+              <option value="australia">Australia</option>
+              <option value="singapore">Singapore</option>
+              <option value="germany">Germany</option>
+              <option value="uae">UAE</option>
+              <option value="italy">Italy</option>
+              <option value="japan">Japan</option>
+              <option value="thailand">Thailand</option>
+              <option value="new-zealand">New Zealand</option>
+              <option value="maldives">Maldives</option>
+              <option value="greece">Greece</option>
+              <option value="turkey">Turkey</option>
+            </select>
+            <!-- Dropdown Arrow Icon -->
+            <div
+              class="absolute inset-y-0 right-3 mt-7.5 flex items-center pointer-events-none"
+            >
+              <i class="fa fa-caret-down text-gray-500"></i>
+              <!-- Font Awesome Icon -->
             </div>
           </div>
         </div>
-      </footer>
-      
-   
-      
-          
-          
-    
- 
-   <!-- <div class="max-w-4xl mx-auto p-8"> -->
 
-
-    <!-- Heading -->
-    <!-- <h1 class="text-4xl font-bold text-center text-blue-600 mb-8 fadeIn">TripFinder</h1>  -->
-
-     <!-- Source and Destination Selection 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-      <div>
-        <label for="source" class="block text-lg font-medium">Source Country</label>
-        <select id="source" class="w-full p-2 mt-2 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-          <option value="">Select Source</option>
-          <option value="USA">USA</option>
-          <option value="Canada">Canada</option>
-          <option value="India">India</option> -->
-          <!-- Add more countries as needed -->
-        <!-- </select>
-       </div>  -->
-     
-      <!-- <div>
-        <label for="destination" class="block text-lg font-medium">Destination Country</label>
-        <select id="destination" class="w-full p-2 mt-2 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-          <option value="">Select Destination</option>
-          <option value="Thailand">Thailand</option>
-          <option value="Singapore">Singapore</option>
-          <option value="Japan">Japan</option>
-         Add more countries as needed 
-      </select>
-      </div>
-    </div>    -->
-
-    <!-- Options Section -->
-    <!-- <div id="options" class="mt-8 hidden fadeIn">
-      <h2 class="text-2xl font-semibold mb-4">Available Options</h2>
-      <ul class="space-y-4">
-        <li><button class="option-btn text-blue-500 hover:text-blue-700 hover:underline p-4 bg-gray-100 rounded-lg shadow-md w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105">Visa Requirements</button></li>
-        <li><button class="option-btn text-blue-500 hover:text-blue-700 hover:underline p-4 bg-gray-100 rounded-lg shadow-md w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105">Flight Booking</button></li>
-        <li><button class="option-btn text-blue-500 hover:text-blue-700 hover:underline p-4 bg-gray-100 rounded-lg shadow-md w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105">Hotel Booking</button></li>
-        <li><button class="option-btn text-blue-500 hover:text-blue-700 hover:underline p-4 bg-gray-100 rounded-lg shadow-md w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105">Car Rental</button></li>
-        <li><button class="option-btn text-blue-500 hover:text-blue-700 hover:underline p-4 bg-gray-100 rounded-lg shadow-md w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105">Local Transportation</button></li>
-        <li><button class="option-btn text-blue-500 hover:text-blue-700 hover:underline p-4 bg-gray-100 rounded-lg shadow-md w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105">Mobile Connectivity</button></li>
-        <li><button class="option-btn text-blue-500 hover:text-blue-700 hover:underline p-4 bg-gray-100 rounded-lg shadow-md w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105">Insurance Options</button></li>
-      </ul> -->
-
-      <!-- Links Section -->
-      <!-- <div id="links" class="links mt-8 hidden slideIn">
-        <h3 class="text-xl font-semibold mb-2" id="option-title"></h3>
-        <p id="option-links" class="text-gray-700"></p>
+        <!-- Search Button -->
+        <button
+          class="mt-4 px-6 py-3 bg-[rgb(190,169,144)] border border-[rgb(190,169,144)] font-semibold rounded-lg shadow-lg hover:bg-[rgb(141,129,111)] hover:border[rgb(190,169,144)] transition duration-300"
+        >
+          Search
+        </button>
       </div>
     </div>
-  </div> -->
 
-  <!-- JavaScript -->
-  <!-- <script src="script.js"></script>
-   
-  </script> -->
-</body>
+    <!-- About Section Container -->
+    <div
+      id="about-us"
+      class="bg-black text-white py-60 min-h-screen flex flex-col sm:flex-row items-start justify-center px-4 sm:px-6 md:px-10 lg:px-20 md:py-50  "
+    >
+      <!-- Left Section (Leftbar) -->
+      <div
+        class="w-full sm:w-1/3 flex justify-center items-start sm:block mb-8 sm:mb-0"
+      >
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-center">
+          About Trip Finder
+        </h2>
+      </div>
+
+      <!-- Vertical Line (Hidden on mobile) -->
+      <div
+        class="hidden sm:block w-1 h-40 sm:h-60 bg-[rgb(190,169,144)] mx-6 md:mx-12 lg:mx-16"
+      ></div>
+
+      <!-- Right Section (Rightbar) -->
+      <div class="w-full sm:w-2/3">
+        <p class="text-lg sm:text-xl md:text-2xl text-left fauna-font">
+          Welcome to Trip Finder, your go-to platform for effortless travel
+          planning. Designed with user-friendliness in mind, our website
+          simplifies the travel experience, allowing you to easily select your
+          departure and arrival countries to access crucial travel information.
+          With a focus on your needs, we provide a comprehensive suite of tools
+          to help you plan your journey. From visa requirements to accommodation
+          suggestions, embark on your travel adventure with confidence and ease
+          at Trip Finder.
+        </p>
+
+        <div class="flex justify-start space-x-4 mt-8 p-6">
+          <button
+            class="bg-[rgb(190,169,144)] text-white px-6 py-3 hover:bg-[rgb(141,129,111)] fauna-font"
+          >
+            Services
+          </button>
+          <button
+            class="bg-transparent fauna-font border border-gray-500 text-white px-6 py-3 hover:bg-[rgb(180,160,130)]"
+          >
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <section
+      class="bg-[rgb(235,230,222)] text-[rgb(72,72,72)] py-20 px-8 min-h-screen"
+    >
+      <!-- Title -->
+      <h2 class="text-5xl font-bold text-center text-[rgb(141,129,111)] mb-4">
+        Services Offered
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="text-lg md:text-xl text-center text-[rgb(72,72,72)] mb-12">
+        Explore our tailored services designed to enhance your travel experience
+        with Trip Finder.
+      </p>
+
+      <!-- Service Boxes -->
+      <div id="services" class="flex flex-wrap justify-center gap-8">
+        <!-- Box 1: Visa Explorer -->
+        <div
+          class="serviceBox w-full sm:w-96 md:w-80 lg:w-80 p-8 bg-white shadow-lg h-96 relative overflow-hidden py-14"
+        >
+          <div class="hoverImageWrapper">
+            <img
+              class="hoverImage object-cover w-full h-full"
+              alt="Visa Explorer"
+              src="photos/visa.jpeg"
+            />
+          </div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-[rgba(7,14,12,0.6)] bg-opacity-50"
+          ></div>
+          <div class="relative z-10 text-center">
+            <h3 class="text-3xl font-semibold text-white mb-4">
+              Visa Explorer
+            </h3>
+            <p class="text-white mb-4 fauna-font">
+              Navigate your visa requirements effortlessly—find e-visa options
+              and discover countries that allow visa-free travel.
+            </p>
+            <button
+              class="text-white font-semibold hover:text-gray-400 transition duration-300"
+            >
+              Learn More
+              <span class="ml-2">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Box 2: Flight Finder -->
+        <div
+          class="serviceBox w-full sm:w-96 md:w-80 lg:w-80 p-8 bg-white shadow-lg h-96 relative overflow-hidden py-14"
+        >
+          <div class="hoverImageWrapper">
+            <img
+              class="hoverImage object-cover w-full h-full"
+              alt="Flight Finder"
+              src="photos/flight.jpeg"
+            />
+          </div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-[rgba(7,14,12,0.6)] bg-opacity-50"
+          ></div>
+          <div class="relative z-10 text-center">
+            <h3 class="text-3xl font-semibold text-white mb-4">
+              Flight Finder
+            </h3>
+            <p class="text-white mb-4 fauna-font">
+              Uncover the best flight deals tailored to your journey—compare
+              prices and airlines for your selected routes.
+            </p>
+            <button
+              class="text-white font-semibold hover:text-gray-400 transition duration-300"
+            >
+              Learn More
+              <span class="ml-2">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Box 3: Hotel Finder -->
+        <div
+          class="serviceBox w-full sm:w-96 md:w-80 lg:w-80 p-8 bg-white shadow-lg h-96 relative overflow-hidden py-14"
+        >
+          <div class="hoverImageWrapper">
+            <img
+              class="hoverImage object-cover w-full h-full"
+              alt="Hotel Finder"
+              src="photos/hotel.jpeg"
+            />
+          </div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-[rgba(7,14,12,0.6)] bg-opacity-50"
+          ></div>
+          <div class="relative z-10 text-center">
+            <h3 class="text-3xl font-semibold text-white mb-4">Hotel Finder</h3>
+            <p class="text-white mb-4 fauna-font">
+              Receive personalized accommodation recommendations based on your
+              destination, budget, and guest ratings.
+            </p>
+            <button
+              class="text-white font-semibold hover:text-gray-400 transition duration-300"
+            >
+              Learn More
+              <span class="ml-2">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Box 4: Local Transportation -->
+        <div
+          class="serviceBox w-full sm:w-96 md:w-80 lg:w-80 p-8 bg-white shadow-lg h-96 relative overflow-hidden py-14"
+        >
+          <div class="hoverImageWrapper">
+            <img
+              class="hoverImage object-cover w-full h-full"
+              alt="Local Transportation"
+              src="photos/LocalTransport.avif"
+            />
+          </div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-[rgba(7,14,12,0.6)] bg-opacity-50"
+          ></div>
+          <div class="relative z-10 text-center">
+            <h3 class="text-3xl font-semibold text-white mb-4">
+              Local Transportation
+            </h3>
+            <p class="text-white mb-4 fauna-font">
+              Explore convenient and affordable transportation options within
+              your destination—be it buses, taxis, or ridesharing.
+            </p>
+            <button
+              class="text-white font-semibold hover:text-gray-400 transition duration-300"
+            >
+              Learn More
+              <span class="ml-2">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Box 5: Places to Visit -->
+        <div
+          class="serviceBox w-full sm:w-96 md:w-80 lg:w-80 p-8 bg-white shadow-lg h-96 relative overflow-hidden py-14"
+        >
+          <div class="hoverImageWrapper">
+            <img
+              class="hoverImage object-cover w-full h-full"
+              alt="Places to Visit"
+              src="photos/places.avif"
+            />
+          </div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-[rgba(7,14,12,0.6)] bg-opacity-50"
+          ></div>
+          <div class="relative z-10 text-center">
+            <h3 class="text-3xl font-semibold text-white mb-4">
+              Places to Visit
+            </h3>
+            <p class="text-white mb-4 fauna-font">
+              Discover the must-see attractions and hidden gems of your
+              destination, from iconic landmarks to off-the-beaten-path spots.
+            </p>
+            <button
+              class="text-white font-semibold hover:text-gray-400 transition duration-300"
+            >
+              Learn More
+              <span class="ml-2">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Box 6: Mobile Connectivity -->
+        <div
+          class="serviceBox w-full sm:w-96 md:w-80 lg:w-80 p-8 bg-white shadow-lg h-96 relative overflow-hidden py-14"
+        >
+          <div class="hoverImageWrapper">
+            <img
+              class="hoverImage object-cover w-full h-full"
+              alt="Mobile Connectivity"
+              src="photos/mobile.avif"
+            />
+          </div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-[rgba(7,14,12,0.6)] bg-opacity-50"
+          ></div>
+          <div class="relative z-10 text-center">
+            <h3 class="text-3xl font-semibold text-white mb-4">
+              Mobile Connectivity
+            </h3>
+            <p class="text-white mb-4 fauna-font">
+              Stay connected during your travels with affordable SIM cards,
+              Wi-Fi options, and mobile data plans for your destination.
+            </p>
+            <button
+              class="text-white font-semibold hover:text-gray-400 transition duration-300"
+            >
+              Learn More
+              <span class="ml-2">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Box 7: Travel & Health Insurance -->
+        <div
+          class="serviceBox w-full sm:w-96 md:w-80 lg:w-80 p-8 bg-white shadow-lg h-96 relative overflow-hidden py-14"
+        >
+          <div class="hoverImageWrapper">
+            <img
+              class="hoverImage object-cover w-full h-full"
+              alt="Travel & Health Insurance"
+              src="photos/insurance.avif"
+            />
+          </div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-[rgba(7,14,12,0.6)] bg-opacity-50"
+          ></div>
+          <div class="relative z-10 text-center">
+            <h3 class="text-3xl font-semibold text-white mb-4">
+              Travel & Health Insurance
+            </h3>
+            <p class="text-white mb-4 fauna-font">
+              Protect yourself during your travels with comprehensive travel and
+              health insurance options that cover emergencies.
+            </p>
+            <button
+              class="text-white font-semibold hover:text-gray-400 transition duration-300"
+            >
+              Learn More
+              <span class="ml-2">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Box 8: Know Before You Go (Rules & Regulations) -->
+        <div
+          class="serviceBox w-full sm:w-96 md:w-80 lg:w-80 p-8 bg-white shadow-lg h-96 relative overflow-hidden py-14"
+        >
+          <div class="hoverImageWrapper">
+            <img
+              class="hoverImage object-cover w-full h-full"
+              alt="Know Before You Go"
+              src="photos/Rules.avif"
+            />
+          </div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-[rgba(7,14,12,0.6)] bg-opacity-50"
+          ></div>
+          <div class="relative z-10 text-center">
+            <h3 class="text-3xl font-semibold text-white mb-4">
+              Know Before You Go
+            </h3>
+            <p class="text-white mb-4 fauna-font">
+              Get informed about the local rules, regulations, and customs to
+              ensure a smooth and respectful travel experience.
+            </p>
+            <button
+              class="text-white font-semibold hover:text-gray-400 transition duration-300"
+            >
+              Learn More
+              <span class="ml-2">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--scrollbar-->
+    <section class="bg-white py-10">
+      <div class="overflow-hidden">
+        <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="10"
+          class="text-4xl font-extrabold text-[rgb(72,72,72)]"
+        >
+          Plan Your Adventure &nbsp;✈️ &nbsp; Plan Your Adventure &nbsp; 🌍
+          &nbsp; Plan Your Adventure &nbsp; 🏖️ &nbsp; Plan Your Adventure &nbsp;
+          🚀
+        </marquee>
+      </div>
+    </section>
+
+    <!--testimonial-->
+    <section
+      id="Testimonials"
+      class="bg-[rgb(235,230,222)] text-black py-30 px-6"
+    >
+      <!-- Title -->
+      <h2 class="text-5xl font-extrabold text-center text-black mb-6">
+        What Our Users Say
+      </h2>
+
+      <!-- Subtitle -->
+      <p
+        class="text-lg md:text-xl text-center text-[rgb(72,72,72)] mb-12 max-w-3xl mx-auto"
+      >
+        Hear from our happy users who have trusted
+        <span class="text-[rgb(190,169,144)]">Trip Finder</span> for their
+        perfect journeys.
+      </p>
+
+      <!-- Testimonial Boxes -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+      >
+        <!-- Testimonial 1 -->
+        <div
+          class="bg-white p-8 border border-[rgb(190,169,144)] rounded-lg shadow-lg transition transform hover:-translate-y-2 hover:shadow-xl duration-300"
+        >
+          <div class="flex items-center mb-4">
+            <img
+              src="photos/john.avif"
+              alt="John Doe"
+              class="w-12 h-12 rounded-full border-2 border-[rgb(190,169,144)] mr-4"
+            />
+            <div>
+              <h3 class="text-lg font-bold text-[rgb(72,72,72)]">John Doe</h3>
+              <p class="text-sm text-gray-500">Traveler</p>
+            </div>
+          </div>
+          <blockquote
+            class="text-sm md:text-base italic text-[rgb(72,72,72)] fauna-font"
+          >
+            "Trip Finder made planning my vacation a breeze! The visa
+            information was clear and the flight options were plentiful, making
+            my travel experience incredibly smooth."
+          </blockquote>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div
+          class="bg-white p-8 border border-[rgb(190,169,144)] rounded-lg shadow-lg transition transform hover:-translate-y-2 hover:shadow-xl duration-300"
+        >
+          <div class="flex items-center mb-4">
+            <img
+              src="photos/Jane.jpg"
+              alt="Jane Smith"
+              class="w-12 h-12 rounded-full border-2 border-[rgb(190,169,144)] mr-4"
+            />
+            <div>
+              <h3 class="text-lg font-bold text-[rgb(72,72,72)]">Jane Smith</h3>
+              <p class="text-sm text-gray-500">Explorer</p>
+            </div>
+          </div>
+          <blockquote
+            class="text-sm md:text-base italic text-[rgb(72,72,72)] fauna-font"
+          >
+            "I had a fantastic experience using Trip Finder! The hotel booking
+            suggestions were spot on, and the local transportation options
+            helped me navigate the city with ease."
+          </blockquote>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div
+          class="bg-white p-8 border border-[rgb(190,169,144)] rounded-lg shadow-lg transition transform hover:-translate-y-2 hover:shadow-xl duration-300"
+        >
+          <div class="flex items-center mb-4">
+            <img
+              src="photos/Emily.jpg"
+              alt="Emily Johnson"
+              class="w-12 h-12 rounded-full border-2 border-[rgb(190,169,144)] mr-4"
+            />
+            <div>
+              <h3 class="text-lg font-bold text-[rgb(72,72,72)]">
+                Emily Johnson
+              </h3>
+              <p class="text-sm text-gray-500">Adventurer</p>
+            </div>
+          </div>
+          <blockquote
+            class="text-sm md:text-base italic text-[rgb(72,72,72)] fauna-font"
+          >
+            "Trip Finder helped me discover amazing places and made my trip
+            planning stress-free. I highly recommend it to all travelers!"
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- Call-to-Action -->
+      <div class="text-center mt-12">
+        <button
+          class="bg-[rgb(190,169,144)] text-white px-8 py-3 text-lg font-semibold rounded-lg hover:bg-[rgb(141,129,111)] transition duration-300 shadow-md"
+        >
+          Share Your Experience
+        </button>
+      </div>
+    </section>
+
+    <!--bg img-->
+    <section
+      class="bg-cover bg-center bg-no-repeat bg-fixed"
+      style="
+        background-image: url('photos/thomas-griesbeck-BS-Uxe8wU5Y-unsplash.jpg');
+        padding: 300px 0;
+      "
+    ></section>
+
+    <!-- contact Section -->
+    <section
+      id="Conatct-us"
+      class="bg-black text-white p-6 min-h-screen flex flex-col items-center justify-start sm:py-20 sm:min-h-0" 
+    >
+      <!-- Title -->
+      <h2 class="text-5xl font-semibold m-8 text-center">Contact Us</h2>
+
+      <!-- Contact Section -->
+      <div
+        class="w-full max-w-screen-lg flex flex-col md:flex-row items-start justify-center py-[80px]"
+      >
+        <!-- Left Section (Leftbar) -->
+        <div
+          class="w-full md:w-1/2 flex flex-col justify-start items-start mb-8 md:mb-0 px-4"
+        >
+          <p class="text-lg mb-4 fauna-font">
+            <strong class="fauna-font">Email:</strong><br />
+            info@youraddress.com
+          </p>
+          <p class="text-lg mb-4 fauna-font">
+            <strong class="fauna-font">Phone:</strong><br />
+            646-675-5974
+          </p>
+          <p class="text-lg mb-4 fauna-font">
+            <strong class="fauna-font">Address:</strong><br />
+            3961 Small Street, New York, United States
+          </p>
+
+          <!-- Horizontal Line -->
+          <hr class="border-t-2 border-white w-full mb-4" />
+
+          <p class="text-lg fauna-font">
+            We'd be delighted to hear from you regarding any inquiries or
+            feedback you may have.
+          </p>
+        </div>
+
+        <!-- Vertical Line (on larger screens) -->
+        <div class="w-0.5 h-full bg-white mx-6 hidden md:block"></div>
+
+        <!-- Right Section (Rightbar) -->
+        <div
+          class="w-full md:w-1/2 flex flex-col justify-start items-start px-4"
+        >
+          <form action="#" method="POST" class="w-full">
+            <div class="mb-4">
+              <label for="name" class="block text-lg font-semibold fauna-font"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full p-3 bg-white text-black border border-gray-500 fauna-font"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="email" class="block text-lg font-semibold fauna-font"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full p-3 bg-white text-black border border-gray-500 fauna-font"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="message"
+                class="block text-lg font-semibold fauna-font"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full p-3 bg-white text-black border border-gray-500 fauna-font"
+                placeholder="Type your message here"
+                required
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="bg-[rgb(190,169,144)] text-white px-10 py-3 hover:bg-[rgb(141,129,111)] fauna-font"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!--footer-->
+    <footer class="bg-black text-white py-4">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col items-center justify-center space-y-6">
+          <!-- Links Section -->
+          <div
+            class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-center"
+          >
+            <a
+              href="#about"
+              class="text-lg font-semibold hover:text-gray-400 transition duration-300"
+              >About</a
+            >
+            <a
+              href="#services"
+              class="text-lg font-semibold hover:text-gray-400 transition duration-300"
+              >Services</a
+            >
+            <a
+              href="#testimonials"
+              class="text-lg font-semibold hover:text-gray-400 transition duration-300"
+              >Testimonials</a
+            >
+            <a
+              href="#contact"
+              class="text-lg font-semibold hover:text-gray-400 transition duration-300"
+              >Contact</a
+            >
+          </div>
+
+          
+
+          <!-- Copyright Section -->
+          <div class="text-center">
+            <p class="text-sm md:text-lg font-semibold">
+              &copy; 2025 TripFinder. All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+  
+    menuToggle.addEventListener('click', function () {
+      // Toggle the 'hidden' class on the mobile menu
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
+</script>
+ 
+<script src="script.js"></script>
+  </body>
 </html>

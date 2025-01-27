@@ -1,6 +1,15 @@
 document.getElementById("source").addEventListener("change", showOptions);
 document.getElementById("destination").addEventListener("change", showOptions);
 
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+  
+    menuToggle.addEventListener('click', function () {
+      // Toggle the 'hidden' class on the mobile menu
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
 function showOptions() {
   const source = document.getElementById("source").value;
   const destination = document.getElementById("destination").value;
@@ -22,3 +31,4 @@ buttons.forEach(button => {
     document.getElementById("links").classList.remove("hidden");
   });
 });
+
