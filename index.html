@@ -834,24 +834,6 @@
 
     
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-  
-    menuToggle.addEventListener('click', function () {
-      // Toggle the 'hidden' class on the mobile menu
-      mobileMenu.classList.toggle('hidden');
-    });
-  });
-
-  document.querySelectorAll('.w-full.text-left').forEach((question, index) => {
-    question.addEventListener('click', () => {
-      const answer = document.getElementById(`faq-${index + 1}-answer`);
-      answer.classList.toggle('hidden');
-    });
-  });
-</script>
  
 <script src="script.js"></script>
   </body>
